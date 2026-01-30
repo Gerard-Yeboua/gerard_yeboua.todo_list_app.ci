@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 My Todo List</h1>
+        </header>
+
+        <div class="todo-wrapper">
+            <!-- Input Section -->
+            <div class="input-section">
+                <input 
+                    type="text" 
+                    id="todoInput" 
+                    placeholder="What needs to be done?"
+                    aria-label="New todo item"
+                >
+                <button id="addBtn" aria-label="Add todo">
+                    <span>+</span> Add Task
+                </button>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-section">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="active">Active</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+            </div>
+
+            <!-- Todo List -->
+            <ul id="todoList" class="todo-list">
+                <!-- Todo items will be added here dynamically -->
+            </ul>
+
+            <!-- Stats Section -->
+            <div class="stats-section">
+                <span id="todoCount">0 tasks remaining</span>
+                <button id="clearCompleted">Clear Completed</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
