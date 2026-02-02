@@ -1,47 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List App</title>
+    <title>Mes Tâches</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>📝 My Todo List</h1>
-        </header>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>📝 Mes Tâches</h1>
+            </div>
 
-        <div class="todo-wrapper">
+            <nav class="sidebar-nav">
+                <div class="nav-item active" data-view="my-day">
+                    <span class="nav-icon">☀️</span>
+                    <span>Ma journée</span>
+                    <span class="count" id="todayCount">0</span>
+                </div>
+                <div class="nav-item" data-view="important">
+                    <span class="nav-icon">⭐</span>
+                    <span>Important</span>
+                    <span class="count" id="importantCount">0</span>
+                </div>
+                <div class="nav-item" data-view="planned">
+                    <span class="nav-icon">📅</span>
+                    <span>Planifié</span>
+                    <span class="count" id="plannedCount">0</span>
+                </div>
+                <div class="nav-item" data-view="all">
+                    <span class="nav-icon">📋</span>
+                    <span>Toutes</span>
+                    <span class="count" id="allCount">0</span>
+                </div>
+                <div class="nav-item" data-view="completed">
+                    <span class="nav-icon">✓</span>
+                    <span>Terminées</span>
+                    <span class="count" id="completedCount">0</span>
+                </div>
+            </nav>
+
+            <div class="lists-section">
+                <div class="lists-header">
+                    <h3>Listes</h3>
+                    <button id="addListBtn" title="Nouvelle liste">+</button>
+                </div>
+                <div id="customLists" class="custom-lists">
+                    <!-- Les listes personnalisées seront ajoutées ici -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header">
+                <h2 id="viewTitle">Ma journée</h2>
+                <p id="viewDate" class="view-date"></p>
+            </div>
+
             <!-- Input Section -->
             <div class="input-section">
+                <button class="checkbox-placeholder"></button>
                 <input 
                     type="text" 
                     id="todoInput" 
-                    placeholder="What needs to be done?"
-                    aria-label="New todo item"
+                    placeholder="Ajouter une tâche"
+                    aria-label="Nouvelle tâche"
                 >
-                <button id="addBtn" aria-label="Add todo">
-                    <span>+</span> Add Task
+                <button id="addBtn" class="add-btn-inline" title="Ajouter">
+                    <span>+</span>
                 </button>
             </div>
 
-            <!-- Filter Buttons -->
-            <div class="filter-section">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="active">Active</button>
-                <button class="filter-btn" data-filter="completed">Completed</button>
+            <!-- Options Section (pour la tâche en cours d'ajout) -->
+            <div class="task-options" id="taskOptions" style="display: none;">
+                <div class="option-group">
+                    <button class="option-btn" id="setDateBtn">
+                        <span>📅</span> Date d'échéance
+                    </button>
+                    <button class="option-btn" id="setImportantBtn">
+                        <span>⭐</span> Marquer comme important
+                    </button>
+                    <select id="listSelect" class="option-select">
+                        <option value="">Aucune liste</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Date Picker (caché par défaut) -->
+            <div class="date-picker" id="datePicker" style="display: none;">
+                <input type="date" id="dueDateInput">
+                <button id="confirmDate">OK</button>
+                <button id="cancelDate">Annuler</button>
             </div>
 
             <!-- Todo List -->
-            <ul id="todoList" class="todo-list">
-                <!-- Todo items will be added here dynamically -->
-            </ul>
+            <div id="todoListContainer" class="todo-list-container">
+                <ul id="todoList" class="todo-list">
+                    <!-- Les tâches seront ajoutées ici -->
+                </ul>
+            </div>
 
             <!-- Stats Section -->
             <div class="stats-section">
-                <span id="todoCount">0 tasks remaining</span>
-                <button id="clearCompleted">Clear Completed</button>
+                <span id="todoCount">0 tâche</span>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal pour créer une nouvelle liste -->
+    <div class="modal" id="listModal" style="display: none;">
+        <div class="modal-content">
+            <h3>Nouvelle liste</h3>
+            <input type="text" id="listNameInput" placeholder="Nom de la liste">
+            <div class="modal-actions">
+                <button id="createListBtn" class="btn-primary">Créer</button>
+                <button id="cancelListBtn" class="btn-secondary">Annuler</button>
             </div>
         </div>
     </div>
