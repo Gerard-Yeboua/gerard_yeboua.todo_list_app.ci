@@ -1,23 +1,25 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes Tâches</title>
+    <title>My Tasks</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="app-container">
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <h1>📝 Mes Tâches</h1>
+                <h1>📝 My Tasks</h1>
             </div>
 
             <nav class="sidebar-nav">
                 <div class="nav-item active" data-view="my-day">
                     <span class="nav-icon">☀️</span>
-                    <span>Ma journée</span>
+                    <span>My Day</span>
                     <span class="count" id="todayCount">0</span>
                 </div>
                 <div class="nav-item" data-view="important">
@@ -27,28 +29,28 @@
                 </div>
                 <div class="nav-item" data-view="planned">
                     <span class="nav-icon">📅</span>
-                    <span>Planifié</span>
+                    <span>Planned</span>
                     <span class="count" id="plannedCount">0</span>
                 </div>
                 <div class="nav-item" data-view="all">
                     <span class="nav-icon">📋</span>
-                    <span>Toutes</span>
+                    <span>All</span>
                     <span class="count" id="allCount">0</span>
                 </div>
                 <div class="nav-item" data-view="completed">
                     <span class="nav-icon">✓</span>
-                    <span>Terminées</span>
+                    <span>Completed</span>
                     <span class="count" id="completedCount">0</span>
                 </div>
             </nav>
 
             <div class="lists-section">
                 <div class="lists-header">
-                    <h3>Listes</h3>
-                    <button id="addListBtn" title="Nouvelle liste">+</button>
+                    <h3>Lists</h3>
+                    <button id="addListBtn" title="New list">+</button>
                 </div>
                 <div id="customLists" class="custom-lists">
-                    <!-- Les listes personnalisées seront ajoutées ici -->
+                    <!-- Custom lists will be added here -->
                 </div>
             </div>
         </aside>
@@ -56,72 +58,68 @@
         <!-- Main Content -->
         <main class="main-content">
             <div class="content-header">
-                <h2 id="viewTitle">Ma journée</h2>
+                <h2 id="viewTitle">My Day</h2>
                 <p id="viewDate" class="view-date"></p>
             </div>
 
             <!-- Input Section -->
             <div class="input-section">
                 <button class="checkbox-placeholder"></button>
-                <input 
-                    type="text" 
-                    id="todoInput" 
-                    placeholder="Ajouter une tâche"
-                    aria-label="Nouvelle tâche"
-                >
-                <button id="addBtn" class="add-btn-inline" title="Ajouter">
+                <input type="text" id="todoInput" placeholder="Add a task" aria-label="New task">
+                <button id="addBtn" class="add-btn-inline" title="Add">
                     <span>+</span>
                 </button>
             </div>
 
-            <!-- Options Section (pour la tâche en cours d'ajout) -->
+            <!-- Options Section (for task being added) -->
             <div class="task-options" id="taskOptions" style="display: none;">
                 <div class="option-group">
                     <button class="option-btn" id="setDateBtn">
-                        <span>📅</span> Date d'échéance
+                        <span>📅</span> Due date
                     </button>
                     <button class="option-btn" id="setImportantBtn">
-                        <span>⭐</span> Marquer comme important
+                        <span>⭐</span> Mark as important
                     </button>
                     <select id="listSelect" class="option-select">
-                        <option value="">Aucune liste</option>
+                        <option value="">No list</option>
                     </select>
                 </div>
             </div>
 
-            <!-- Date Picker (caché par défaut) -->
+            <!-- Date Picker (hidden by default) -->
             <div class="date-picker" id="datePicker" style="display: none;">
                 <input type="date" id="dueDateInput">
                 <button id="confirmDate">OK</button>
-                <button id="cancelDate">Annuler</button>
+                <button id="cancelDate">Cancel</button>
             </div>
 
             <!-- Todo List -->
             <div id="todoListContainer" class="todo-list-container">
                 <ul id="todoList" class="todo-list">
-                    <!-- Les tâches seront ajoutées ici -->
+                    <!-- Tasks will be added here -->
                 </ul>
             </div>
 
             <!-- Stats Section -->
             <div class="stats-section">
-                <span id="todoCount">0 tâche</span>
+                <span id="todoCount">0 task</span>
             </div>
         </main>
     </div>
 
-    <!-- Modal pour créer une nouvelle liste -->
+    <!-- Modal to create a new list -->
     <div class="modal" id="listModal" style="display: none;">
         <div class="modal-content">
-            <h3>Nouvelle liste</h3>
-            <input type="text" id="listNameInput" placeholder="Nom de la liste">
+            <h3>New List</h3>
+            <input type="text" id="listNameInput" placeholder="List name">
             <div class="modal-actions">
-                <button id="createListBtn" class="btn-primary">Créer</button>
-                <button id="cancelListBtn" class="btn-secondary">Annuler</button>
+                <button id="createListBtn" class="btn-primary">Create</button>
+                <button id="cancelListBtn" class="btn-secondary">Cancel</button>
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
